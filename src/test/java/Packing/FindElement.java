@@ -13,11 +13,11 @@ public class FindElement extends SeleniumWebDriver {
            WebDriverWait wait=new WebDriverWait(dr,10);
            wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
        }catch (Exception e){
-           System.out.println("元素"+by+"查找超时");
-           e.printStackTrace();
+            System.out.println("元素"+by+"查找超时");
+            e.printStackTrace();
 
         }
-       return dr.findElement(by);
+        return dr.findElement(by);
 
     }
     public static List<WebElement> findElements(final By by){

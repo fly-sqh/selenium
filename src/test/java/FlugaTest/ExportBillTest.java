@@ -35,7 +35,7 @@ public class ExportBillTest {
         s2.selectByValue(station);//选择站点
     }
     @DataProvider(name="productdate")
-    public Object[][] test(){
+    public static Object[][] test(){
         return new Object[][]{
                 {"1","2"},//ET-CAN
                 {"1","1"},

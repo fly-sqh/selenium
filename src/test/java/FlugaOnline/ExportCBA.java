@@ -44,6 +44,7 @@ public class ExportCBA {
         //Thread.sleep(1000);
         dr.findElement(By.id("cbaBtn")).click();
         String nowhandle=dr.getWindowHandle();
+
         for (String winhandle : dr.getWindowHandles()){
             if (winhandle.equals(nowhandle)){
                 continue;

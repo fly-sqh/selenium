@@ -1,6 +1,8 @@
 package FlugaOnline;
 
 import Logic.*;
+import Packing.FindElement;
+import Packing.SeleniumWebDriver;
 import PagePo.MenuBar;
 import PagePo.OfflinePage;
 import PagePo.OnlinePage;
@@ -14,12 +16,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Online {
-    WebDriver dr=null;
-    @BeforeTest
-    public void setUp(){
-        System.setProperty("webdriver.chrome.driver","D:\\chrome\\chromedriver.exe");
-    }
+public class Online extends SeleniumWebDriver {
     @AfterTest
     public void tearDown(){
 
@@ -28,18 +25,15 @@ public class Online {
 
     @Test
     public void Order() throws InterruptedException, IOException {
-        dr=new ChromeDriver();
+        SeleniumWebDriver.open("chrome");
         dr.manage().window().maximize();
         dr.get("https://www.fluga.com/#/page");
         Login.Login(dr,"megacap","XdD2w74W");//登录
-        Thread.sleep(2000);
-        dr.findElement(MenuBar.booking).click();//点击订单管理
-        Thread.sleep(2000);
-        dr.findElement(MenuBar.online).click();//点击订舱单online
-        Thread.sleep(1000);
+        FindElement.findElement(MenuBar.booking).click();//点击订单管理
+        FindElement.findElement(MenuBar.online).click();//点击订舱单online
         dr.switchTo().frame("content-iframe");
         Booking.Online(dr);//online下单
-        OperationOrder.ConfirmOrder(dr,"CSHI");//接受订单
+        /*OperationOrder.ConfirmOrder(dr,"CSHI");//接受订单
         dr.switchTo().frame("content-iframe");
         Thread.sleep(1000);
         CBA.CBA(dr);//点击CBA
@@ -101,7 +95,7 @@ public class Online {
         dr.findElement(OfflinePage.offlineflightdateto).clear();
         dr.findElement(OnlinePage.agentcode).clear();
         Thread.sleep(1000);
-        OperationOrder.OfflineCancel(dr,"CSHI");
+        OperationOrder.OfflineCancel(dr,"CSHI");*/
 
 
 
